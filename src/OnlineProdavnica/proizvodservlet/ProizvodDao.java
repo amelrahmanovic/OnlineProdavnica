@@ -12,23 +12,25 @@ import OnlineProdavnica.Models.Proizvodi;
 import OnlineProdavnica.MySQLConfiguration.mysqlconfiguration;
 
 public class ProizvodDao {
-	public void New(String naziv, String opis, String datumobjave, String urlslike)
+	public void New(String naziv, String opis, String datumobjave, String urlslike, int AdministratorId)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			mysqlconfiguration mysqlc = new mysqlconfiguration();
 			Connection con = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
 			Statement st = con.createStatement();
-			st.executeUpdate("INSERT INTO `proizvodi`\r\n" + 
+			st.executeUpdate("INSERT INTO `onlineprodavnica`.`proizvodi`\r\n" + 
 					"(`Naziv`,\r\n" + 
 					"`Opis`,\r\n" + 
 					"`DatumObjave`,\r\n" + 
-					"`UrlSlike`)\r\n" + 
+					"`UrlSlike`,\r\n" + 
+					"`AdministratorId`)\r\n" + 
 					"VALUES\r\n" + 
 					"('"+naziv+"',\r\n" + 
 					"'"+opis+"',\r\n" + 
 					"'"+datumobjave+"',\r\n" + 
-					"'"+urlslike+"');");
+					"'"+urlslike+"',\r\n" + 
+					""+AdministratorId+");");
 		} catch (Exception e) {
 			System.out.println(e);
 		}

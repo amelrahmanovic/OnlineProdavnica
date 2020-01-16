@@ -6,19 +6,21 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import OnlineProdavnica.Models.Administratori;
 import OnlineProdavnica.MySQLConfiguration.mysqlconfiguration;
 
 public class AdminDao {
-
-	public void GetAll()
+	
+	public int FindbyUsername(String username)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			mysqlconfiguration mysqlc = new mysqlconfiguration();
 			Connection con = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select * from administratori where id=1");
+			ResultSet rs = st.executeQuery("select * from administratori where Username LIKE "+"'"+username+"'");
 			if (rs.next()) {
 				Administratori administrator = new Administratori();
 				administrator.Id = rs.getInt("Id");
@@ -26,26 +28,14 @@ public class AdminDao {
 				administrator.Prezime=rs.getString("Prezime");
 				administrator.Username=rs.getString("Username");
 				administrator.Password=rs.getString("Password");
-				System.out.println("*****************************************************************"+administrator.Id+administrator.Ime+administrator.Prezime+administrator.Username+administrator.Password);
+				System.out.println(administrator.Id+"******************");
+				return administrator.Id;
 			}
+			return 0;
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-	}
-	public ResultSet All()
-	{
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			mysqlconfiguration mysqlc = new mysqlconfiguration();
-			Connection con = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select * from administratori");
-			System.out.println("Pozvao**************************************************"+rs.getInt(0));
-			return rs;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return null;
+		return 0;
 	}
 	public boolean FindbyUsernamePassword(String username, String password)
 	{

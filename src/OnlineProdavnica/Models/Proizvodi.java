@@ -6,6 +6,15 @@ public class Proizvodi {
 	public String Opis;
 	public String DatumObjave;
 	public String UrlSlike;
+	public int AdministratorId;
+	
+	
+	public int getAdministratorId() {
+		return AdministratorId;
+	}
+	public void setAdministratorId(int administratorId) {
+		AdministratorId = administratorId;
+	}
 	public int getId() {
 		return Id;
 	}

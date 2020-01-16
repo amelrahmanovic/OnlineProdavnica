@@ -7,9 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import OnlineProdavnica.adminservlet.AdminDao;
 
 /**
  * Servlet implementation class ProizvodNewServlet
@@ -33,6 +36,23 @@ public class ProizvodNewServlet extends HttpServlet {
 		txtNaziv=request.getParameter("naziv");
 		txtOpis=request.getParameter("opis");
 		txtURLSlike=request.getParameter("urlslika");
+		int AdministratorId = 0;
+		
+		Cookie cookie = null;
+        Cookie[] cookies = null;
+        cookies = request.getCookies();
+        if( cookies != null )
+        {
+       	 boolean findUser = false;
+           for (int i = 0; i < cookies.length; i++) {
+              cookie = cookies[i];
+              if(cookie.getName( ).equals("username"))
+              {
+            	  AdminDao admindao = new AdminDao();
+            	  AdministratorId = admindao.FindbyUsername(cookie.getValue( ));
+              }
+           }
+        } 
 		
 		ProizvodDao proizvoddao = new ProizvodDao();
 		
@@ -40,7 +60,7 @@ public class ProizvodNewServlet extends HttpServlet {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
 		String strDate = dateFormat.format(date);  
 		
-		proizvoddao.New(txtNaziv, txtOpis, strDate, txtURLSlike);
+		proizvoddao.New(txtNaziv, txtOpis, strDate, txtURLSlike, AdministratorId);
 		
 		response.sendRedirect("Meni.jsp");
 	}

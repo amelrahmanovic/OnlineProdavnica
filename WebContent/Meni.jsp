@@ -116,6 +116,7 @@ e.printStackTrace();
 <td><b>Opis:</b></td>
 <td><b>Datum objave:</b></td>
 <td><b>Slika:</b></td>
+<td><b>Administrator:</b></td>
 <td><b>Akcija:</b></td>
 </tr>
 <%
@@ -123,7 +124,7 @@ try{
 	mysqlconfiguration mysqlc = new mysqlconfiguration();
 connection = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
 statement=connection.createStatement();
-String sql ="SELECT * FROM proizvodi";
+String sql ="SELECT proizvodi.Id, proizvodi.Naziv, proizvodi.Opis, proizvodi.DatumObjave, proizvodi.UrlSlike, administratori.Ime, administratori.Prezime FROM proizvodi INNER  JOIN administratori ON proizvodi.AdministratorId=administratori.Id;";
 
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
@@ -135,6 +136,7 @@ while(resultSet.next()){
 <td><%=resultSet.getString("Opis") %></td>
 <td><%=resultSet.getString("DatumObjave") %></td>
 <td><%=resultSet.getString("UrlSlike") %></td>
+<td><%=resultSet.getString("Ime") %> <%=resultSet.getString("Prezime") %></td>
 <td> 
 <form action="ProizvodDeleteServlet" method="get">
   <div class="container">
