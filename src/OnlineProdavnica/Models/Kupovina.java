@@ -7,4 +7,5 @@ public class Kupovina {
 	public String Ime;
 	public String Prezime;
 	public String DatumKupovine;
+	public String Adresa;
 }

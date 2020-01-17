@@ -45,6 +45,9 @@ ResultSet resultSet = null;
     <label for="Prezime"><b>Prezime:</b></label>
     <input type="text" placeholder="Enter Prezime" name="prezime" required>
     
+    <label for="Prezime"><b>Adresa:</b></label>
+    <input type="text" placeholder="Enter Adresa" name="adresa" required>
+    
     <label for="Drzava"><b>Drzava:</b></label>
     <select name="DrzavaId">
 <%
