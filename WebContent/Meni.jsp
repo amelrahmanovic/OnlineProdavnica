@@ -206,3 +206,51 @@ e.printStackTrace();
 }
 %>
 </table>
+
+
+
+
+<br>
+<a style="display: block; height: 25px; background: #4E9CAF; padding: 10px; text-align: center; border-radius: 5px; color: white; font-weight: bold;" href="DrzavaNew.jsp">Nova drzava</a>
+
+<br>
+<h2 align="center"><font><strong>Drzave:</strong></font></h2>
+<table align="center" border="1" style="width: 100%">
+<tr>
+
+</tr>
+<tr style="background-color: RGB(47,197,48)">
+<td><b>Drzava:</b></td>
+<td><b>Akcija:</b></td>
+</tr>
+<%
+try{ 
+	mysqlconfiguration mysqlc = new mysqlconfiguration();
+	connection = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
+statement=connection.createStatement();
+String sql ="SELECT * FROM drzave";
+
+resultSet = statement.executeQuery(sql);
+while(resultSet.next()){
+%>
+<tr>
+<td><%=resultSet.getString("Naziv") %></td>
+<td> 
+<form action="DrzavaDeleteServlet" method="get">
+  <div class="container">
+    <input type="hidden" placeholder="Enter Username" name="id" value="<%=resultSet.getString("Id") %>">
+    <input style="width: 100%; height: 40px; background-color: red; color: white;" type="submit" value="Izbrisi">
+  </div>
+</form>
+</td>
+
+</tr>
+
+<% 
+}
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
+</table>

@@ -32,13 +32,4 @@ public class KupovinaDeleteServlet extends HttpServlet {
 		kupovinadao.DeleteById(Integer.parseInt(txtId));
 		response.sendRedirect("Meni.jsp");
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

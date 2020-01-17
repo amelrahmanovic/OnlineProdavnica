@@ -1,4 +1,4 @@
-package OnlineProdavnica.proizvodservlet;
+package OnlineProdavnica.drzavaservlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ProizvodDeleteServlet
+ * Servlet implementation class DrzavaNewServlet
  */
-public class ProizvodDeleteServlet extends HttpServlet {
+public class DrzavaNewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProizvodDeleteServlet() {
+    public DrzavaNewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -24,12 +24,13 @@ public class ProizvodDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String txtId="";
-		txtId=request.getParameter("id");
+		String txtNaziv="";
+		txtNaziv=request.getParameter("naziv");
 		
-		ProizvodDao proizvoddao = new ProizvodDao();
-		proizvoddao.DeleteById(Integer.parseInt(txtId));
-		
+		DrzavaDao dao = new DrzavaDao();
+		dao.New(txtNaziv);
+
 		response.sendRedirect("Meni.jsp");
 	}
+
 }

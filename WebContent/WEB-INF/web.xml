@@ -139,4 +139,34 @@
     <servlet-name>AdminIzbrisiCookieServlet</servlet-name>
     <url-pattern>/AdminIzbrisiCookieServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DrzavaNewServlet</display-name>
+    <servlet-name>DrzavaNewServlet</servlet-name>
+    <servlet-class>OnlineProdavnica.drzavaservlet.DrzavaNewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DrzavaNewServlet</servlet-name>
+    <url-pattern>/DrzavaNewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DrzavaDelete</display-name>
+    <servlet-name>DrzavaDelete</servlet-name>
+    <servlet-class>OnlineProdavnica.drzavaservlet.DrzavaDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DrzavaDelete</servlet-name>
+    <url-pattern>/DrzavaDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DrzavaDeleteServlet</display-name>
+    <servlet-name>DrzavaDeleteServlet</servlet-name>
+    <servlet-class>OnlineProdavnica.drzavaservlet.DrzavaDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DrzavaDeleteServlet</servlet-name>
+    <url-pattern>/DrzavaDeleteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
