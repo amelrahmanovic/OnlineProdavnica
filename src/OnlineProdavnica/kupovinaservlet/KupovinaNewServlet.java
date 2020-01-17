@@ -26,14 +26,16 @@ public class KupovinaNewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String txtIme="", txtPrezime="", proizvodid="", proizvod="";
+		String txtIme="", txtPrezime="", proizvodid="", proizvod="", DrzavaId="";
+		
 		txtIme=request.getParameter("ime");
 		txtPrezime=request.getParameter("prezime");
 		proizvodid=request.getParameter("proizvodid");
 		proizvod=request.getParameter("proizvod");
+		DrzavaId=request.getParameter("DrzavaId");
 		
 		KupovinaDao kupovinadao = new KupovinaDao();
-		kupovinadao.New(txtIme, txtPrezime, proizvodid, proizvod);
+		kupovinadao.New(txtIme, txtPrezime, proizvodid, proizvod, DrzavaId);
 
 		response.sendRedirect("index.jsp");
 	}

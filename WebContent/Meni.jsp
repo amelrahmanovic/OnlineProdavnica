@@ -168,7 +168,8 @@ e.printStackTrace();
 <td><b>Id:</b></td>
 <td><b>Proizvod:</b></td>
 <td><b>Kupac:</b></td>
-<td><b>Datum kupovine:</b></td>
+<td><b> Drzava: </b></td>
+<td><b> Datum kupovine:</b></td>
 <td><b>Akcija:</b></td>
 </tr>
 <%
@@ -176,7 +177,7 @@ try{
 	mysqlconfiguration mysqlc = new mysqlconfiguration();
 	connection = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
 statement=connection.createStatement();
-String sql ="SELECT * FROM kupovina";
+String sql ="SELECT kupovina.DatumKupovine, kupovina.Id, kupovina.NazivProizvoda, kupovina.Ime, kupovina.Prezime, drzave.Naziv FROM kupovina LEFT JOIN drzave ON kupovina.DrzavaId=drzave.id";
 
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
@@ -186,6 +187,7 @@ while(resultSet.next()){
 <td><%=resultSet.getString("Id") %></td>
 <td> <%=resultSet.getString("NazivProizvoda") %> </td>
 <td><%=resultSet.getString("Ime") %> <%=resultSet.getString("Prezime") %></td>
+<td><%=resultSet.getString("Naziv") %></td>
 <td><%=resultSet.getString("DatumKupovine") %></td>
 <td> 
 <form action="KupovinaDeleteServlet" method="get">

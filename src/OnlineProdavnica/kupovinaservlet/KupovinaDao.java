@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import OnlineProdavnica.MySQLConfiguration.mysqlconfiguration;
 
 public class KupovinaDao {
-	public void New(String ime, String prezime, String proizvodid, String proizvod)
+	public void New(String ime, String prezime, String proizvodid, String proizvod, String DrzavaId)
 	{
 		try {
 			LocalDateTime now = LocalDateTime.now();
@@ -20,9 +20,9 @@ public class KupovinaDao {
 			Connection con = DriverManager.getConnection(mysqlc.JDBC, mysqlc.Username, mysqlc.Password);
 			Statement st = con.createStatement();
 			st.executeUpdate("INSERT INTO `onlineprodavnica`.`kupovina`\r\n" + 
-					"(`ProizvodId`, `NazivProizvoda`, `Ime`, `Prezime`, `DatumKupovine`)\r\n" + 
+					"(`ProizvodId`, `NazivProizvoda`, `Ime`, `Prezime`, `DatumKupovine`, `DrzavaId`)\r\n" + 
 					"VALUES\r\n" + 
-					"("+proizvodid+", '"+proizvod+"', '"+ime+"', '"+prezime+"', '"+dtf.format(now).toString()+"');\r\n" + 
+					"("+proizvodid+", '"+proizvod+"', '"+ime+"', '"+prezime+"', '"+dtf.format(now).toString()+"', '"+DrzavaId+"');\r\n" + 
 					"");
 		} catch (Exception e) {
 			System.out.println(e);
