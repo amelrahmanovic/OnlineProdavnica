@@ -12,6 +12,7 @@
 <title>Home</title>
 </head>
 <body>
+<a style="display: block; height: 25px; background: #4E9CAF; padding: 10px; text-align: center; border-radius: 5px; color: white; font-weight: bold;" href="AdminLogin.jsp">Login</a>
 	<%@page import="java.sql.DriverManager"%>
 	<%@page import="java.sql.ResultSet"%>
 	<%@page import="java.sql.Statement"%>

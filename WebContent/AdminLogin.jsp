@@ -28,5 +28,7 @@
   </div>
 </form>
 
+<a style="display: block; height: 25px; background: #4E9CAF; padding: 10px; text-align: center; border-radius: 5px; color: white; font-weight: bold;" href="index.jsp">Nazad</a>
+
 </body>
 </html>
